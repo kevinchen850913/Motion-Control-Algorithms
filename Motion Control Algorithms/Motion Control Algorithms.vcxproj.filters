@@ -18,5 +18,19 @@
     <ClCompile Include="Motion Control Algorithms.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="MotionMain.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="MySystemThread.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MySystemThread.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionMain.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
