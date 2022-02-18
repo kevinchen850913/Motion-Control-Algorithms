@@ -4,6 +4,7 @@
 #include <iostream>;
 #include <thread>;
 #include "MySystemThread.h";
+#include "DP_COMMAND.h";
 
 using namespace std;
 thread MySystemThread(MySystemThread_job);
@@ -18,6 +19,7 @@ int main()
         cin >> CMD;
     }
 }
+
 
 
 

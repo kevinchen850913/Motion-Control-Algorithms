@@ -144,6 +144,7 @@
     <ClCompile Include="MySystemThread.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DP_COMMAND.h" />
     <ClInclude Include="MotionMain.h" />
     <ClInclude Include="MySystemThread.h" />
   </ItemGroup>
