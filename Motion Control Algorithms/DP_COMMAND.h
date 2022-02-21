@@ -2,8 +2,10 @@
 #ifndef DP_COMMAND_h_
 #define DP_COMMAND_h_
 
-typedef struct DP_COMMAND_DATA
-{
+#include <stdlib.h>
+
+class DP_COMMAND_DATA {
+public:
 	short cmd;
 	short sub_cmd;
 	short handle_id;
@@ -43,14 +45,56 @@ typedef struct DP_COMMAND_DATA
 	long data32;
 	long data33;
 	long data34;
-}DP_COMMAND_DATA;
 
-typedef struct COMMAND_NODE {
+	DP_COMMAND_DATA()
+	{
+		this->cmd = 0;
+		this->sub_cmd = 0;
+		this->count = 0;	
+	}
+};
+
+class COMMAND_NODE {
+public:
 	DP_COMMAND_DATA data;
 	COMMAND_NODE* next;
-}COMMAND_NODE;
+	COMMAND_NODE()
+	{
+		this->data = DP_COMMAND_DATA();
+		this->next = NULL;
+	}
+};
 
-COMMAND_NODE COMMAND_NODE_head;
-COMMAND_NODE COMMAND_NODE_tail;
+class COMMAND_NODE_Queue{
+public:
+	COMMAND_NODE *COMMAND_NODE_head;
+	COMMAND_NODE *COMMAND_NODE_tail;
+	long _size;
+	COMMAND_NODE_Queue()
+	{
+		COMMAND_NODE node = COMMAND_NODE();
+		COMMAND_NODE_head = &node;
+		COMMAND_NODE_tail = &node;
+		_size = 0;
+	}
+	long Size()
+	{
+		return _size;
+	}
+	void Enquene(COMMAND_NODE *node)
+	{
+		COMMAND_NODE_tail->next = node;
+		COMMAND_NODE_tail = node;
+		_size++;
+	}
+	void Dequene(COMMAND_NODE *node)
+	{
+		node = COMMAND_NODE_head;
+		COMMAND_NODE_head = COMMAND_NODE_head->next;
+		_size--;
+	}
+};
+
+static COMMAND_NODE_Queue QCOMMAND = COMMAND_NODE_Queue();
 
 #endif
