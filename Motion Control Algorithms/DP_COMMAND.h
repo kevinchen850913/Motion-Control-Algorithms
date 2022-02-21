@@ -1,4 +1,7 @@
 #pragma once
+#ifndef DP_COMMAND_h_
+#define DP_COMMAND_h_
+
 typedef struct DP_COMMAND_DATA
 {
 	short cmd;
@@ -41,3 +44,10 @@ typedef struct DP_COMMAND_DATA
 	long data33;
 	long data34;
 }DP_COMMAND_DATA;
+
+typedef struct COMMAND_NODE {
+	DP_COMMAND_DATA data;
+	COMMAND_NODE* next;
+}COMMAND_NODE;
+
+#endif

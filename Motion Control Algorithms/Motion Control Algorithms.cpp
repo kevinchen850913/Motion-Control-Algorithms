@@ -16,6 +16,7 @@ string delimiter = " ";
 vector<string> words{};
 size_t pos;
 DP_COMMAND_DATA COMMAND_DATA;
+COMMAND_NODE node;
 
 int main()
 {
@@ -35,6 +36,11 @@ int main()
             COMMAND_DATA.sub_cmd = stoi(words[1]);
             COMMAND_DATA.handle_id = stoi(words[2]);
             COMMAND_DATA.data1 = stoi(words[3]);
+            COMMAND_NODE nextnode;
+            nextnode.data = COMMAND_DATA;
+            nextnode.next = NULL;
+            node.next = &nextnode;
+            node = nextnode; 
         }        
     }
 }
