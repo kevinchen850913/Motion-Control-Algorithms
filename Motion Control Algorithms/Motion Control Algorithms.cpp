@@ -31,7 +31,7 @@ void DecodeCMD(string CMD)
         nextnode.data.sub_cmd = stoi(words[1]);
         nextnode.data.handle_id = stoi(words[2]);
         nextnode.data.data1 = stoi(words[3]);
-        QCOMMAND.Enquene(&nextnode);
+        QCOMMAND_p->Enquene(&nextnode);
     }
 }
 
@@ -40,7 +40,7 @@ int main()
 {
     string CMD;
     cout << "Hello World!\n";
-    MySystemThread.join();
+    MySystemThread.detach();
     while (true)
     {
         getline(cin, CMD);

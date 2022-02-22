@@ -3,6 +3,7 @@
 #define DP_COMMAND_h_
 
 #include <stdlib.h>
+#include <mutex>
 
 class DP_COMMAND_DATA {
 public:
@@ -72,9 +73,8 @@ public:
 	long _size;
 	COMMAND_NODE_Queue()
 	{
-		COMMAND_NODE node = COMMAND_NODE();
-		COMMAND_NODE_head = &node;
-		COMMAND_NODE_tail = &node;
+		COMMAND_NODE_head = NULL;
+		COMMAND_NODE_tail = NULL;
 		_size = 0;
 	}
 	long Size()
@@ -83,18 +83,25 @@ public:
 	}
 	void Enquene(COMMAND_NODE *node)
 	{
-		COMMAND_NODE_tail->next = node;
+		if (COMMAND_NODE_tail!=NULL)
+		{
+			COMMAND_NODE_tail->next = node;
+		}
 		COMMAND_NODE_tail = node;
 		_size++;
 	}
 	void Dequene(COMMAND_NODE *node)
 	{
-		node = COMMAND_NODE_head;
-		COMMAND_NODE_head = COMMAND_NODE_head->next;
-		_size--;
+		if (_size > 0)
+		{
+			node = COMMAND_NODE_head;
+			COMMAND_NODE_head = COMMAND_NODE_head->next;
+			_size--;
+		}	
 	}
 };
 
 static COMMAND_NODE_Queue QCOMMAND = COMMAND_NODE_Queue();
+static COMMAND_NODE_Queue *QCOMMAND_p = &QCOMMAND;
 
 #endif
