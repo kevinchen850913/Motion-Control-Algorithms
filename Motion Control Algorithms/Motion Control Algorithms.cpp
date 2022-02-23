@@ -18,7 +18,7 @@ void MySystemThread_job()
 {
     for (long i = 0; i < 100000; i++)
     {
-        MuMotionDataRecord(&QCOMMAND);
+        MotionDataRecord(&QCOMMAND);
         MotionMain();
         Sleep(1);
     }

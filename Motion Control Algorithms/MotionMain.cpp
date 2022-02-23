@@ -2,7 +2,7 @@
 
 int i;
 
-void MuMotionDataRecord(COMMAND_NODE_Queue* QCOMMAND)
+void MotionDataRecord(COMMAND_NODE_Queue* QCOMMAND)
 {
 	if (QCOMMAND->Dequene().cmd == 0)
 	{
