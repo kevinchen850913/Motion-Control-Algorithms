@@ -1,14 +1,10 @@
-#include <stdlib.h>
 #include "MotionMain.h";
-#include "DP_COMMAND.h"
 
-COMMAND_NODE node;
 int i;
 
-void MuMotionDataRecord()
+void MuMotionDataRecord(COMMAND_NODE_Queue* QCOMMAND)
 {
-	QCOMMAND_p->Dequene(&node);
-	if (node.data.cmd == 0)
+	if (QCOMMAND->Dequene().cmd == 0)
 	{
 		i = 0;
 	}	
@@ -20,5 +16,4 @@ void MuMotionDataRecord()
 
 void MotionMain()
 {
-	MuMotionDataRecord();
 }

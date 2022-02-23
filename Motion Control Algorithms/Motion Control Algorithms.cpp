@@ -4,18 +4,26 @@
 #include <string>
 #include <thread>
 #include <queue>
-#include "MySystemThread.h";
 #include "DP_COMMAND.h";
+#include "MotionMain.h";
+#include <windows.h>
 
 using namespace std;
-
-thread MySystemThread(MySystemThread_job);
 
 vector<string> words{};
 string delimiter = " ";
 size_t pos;
 
-COMMAND_NODE nextnode;
+void MySystemThread_job()
+{
+    for (long i = 0; i < 100000; i++)
+    {
+        MuMotionDataRecord(&QCOMMAND);
+        MotionMain();
+        Sleep(1);
+    }
+}
+thread MySystemThread(MySystemThread_job);
 
 void DecodeCMD(string CMD)
 {
@@ -26,15 +34,14 @@ void DecodeCMD(string CMD)
             words.push_back(CMD.substr(0, pos));
             CMD.erase(0, pos + delimiter.length());
         }
-        nextnode = COMMAND_NODE();
-        nextnode.data.cmd = stoi(words[0]);
-        nextnode.data.sub_cmd = stoi(words[1]);
-        nextnode.data.handle_id = stoi(words[2]);
-        nextnode.data.data1 = stoi(words[3]);
-        QCOMMAND_p->Enquene(&nextnode);
+        CMD_DATA = DP_COMMAND_DATA();
+        CMD_DATA.cmd = stoi(words[0]);
+        CMD_DATA.sub_cmd = stoi(words[1]);
+        CMD_DATA.handle_id = stoi(words[2]);
+        CMD_DATA.data1 = stoi(words[3]);
+        QCOMMAND.Enquene(CMD_DATA);
     }
 }
-
 
 int main()
 {

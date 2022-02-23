@@ -141,12 +141,10 @@
   <ItemGroup>
     <ClCompile Include="Motion Control Algorithms.cpp" />
     <ClCompile Include="MotionMain.cpp" />
-    <ClCompile Include="MySystemThread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DP_COMMAND.h" />
     <ClInclude Include="MotionMain.h" />
-    <ClInclude Include="MySystemThread.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

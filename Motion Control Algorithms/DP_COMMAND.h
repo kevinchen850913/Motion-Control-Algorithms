@@ -70,38 +70,48 @@ class COMMAND_NODE_Queue{
 public:
 	COMMAND_NODE *COMMAND_NODE_head;
 	COMMAND_NODE *COMMAND_NODE_tail;
+	COMMAND_NODE *node;
+	DP_COMMAND_DATA data;
 	long _size;
 	COMMAND_NODE_Queue()
 	{
-		COMMAND_NODE_head = NULL;
-		COMMAND_NODE_tail = NULL;
 		_size = 0;
 	}
 	long Size()
 	{
 		return _size;
 	}
-	void Enquene(COMMAND_NODE *node)
+	void Enquene(DP_COMMAND_DATA data)
 	{
-		if (COMMAND_NODE_tail!=NULL)
+		node = new COMMAND_NODE();
+		node->data = data;
+		if (_size > 0)
 		{
 			COMMAND_NODE_tail->next = node;
+		}
+		else
+		{
+			COMMAND_NODE_head = node;
 		}
 		COMMAND_NODE_tail = node;
 		_size++;
 	}
-	void Dequene(COMMAND_NODE *node)
+	DP_COMMAND_DATA Dequene()
 	{
+		data = DP_COMMAND_DATA();
 		if (_size > 0)
 		{
+			data = COMMAND_NODE_head->data;
 			node = COMMAND_NODE_head;
 			COMMAND_NODE_head = COMMAND_NODE_head->next;
+			delete node;
 			_size--;
-		}	
+		}
+		return data;
 	}
 };
 
+static DP_COMMAND_DATA CMD_DATA;
 static COMMAND_NODE_Queue QCOMMAND = COMMAND_NODE_Queue();
-static COMMAND_NODE_Queue *QCOMMAND_p = &QCOMMAND;
 
 #endif
