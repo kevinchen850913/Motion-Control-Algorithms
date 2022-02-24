@@ -44,8 +44,6 @@ public:
 	long data30;
 	long data31;
 	long data32;
-	long data33;
-	long data34;
 
 	DP_COMMAND_DATA()
 	{

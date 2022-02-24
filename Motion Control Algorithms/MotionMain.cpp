@@ -1,16 +1,27 @@
 #include "MotionMain.h";
 
-int i;
+enum 
+{
+    CMD_NULL = 0,
+    CMD_COMMON_SYSTEM ,
+	CMD_COMMON_PROPERTY_SET,
+	CMD_COMMON_PROPERTY_GET,
+	CMD_GROUP_SYSTEM,
+	CMD_GROUP_STATE,
+	CMD_GROUP_MOTION,
+	CMD_AXIS_SYSTEM,
+	CMD_AXIS_STATE,
+	CMD_AXIS_MOTION_IO,
+	CMD_AXIS_MOTION_JOG,
+	CMD_AXIS_MOTION_P2P
+};
 
 void MotionDataRecord(COMMAND_NODE_Queue* QCOMMAND)
 {
-	if (QCOMMAND->Dequene().cmd == 0)
+	switch (QCOMMAND->Dequene().cmd)
 	{
-		i = 0;
-	}	
-	else
-	{
-		i = 1;
+	case CMD_NULL:
+		break;
 	}
 }
 
