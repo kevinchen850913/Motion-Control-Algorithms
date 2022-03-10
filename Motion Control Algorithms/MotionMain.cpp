@@ -22,7 +22,10 @@ void MotionDataRecord(COMMAND_NODE_Queue* QCOMMAND)
 	{
 	case CMD_NULL:
 		break;
-	}
+	case CMD_COMMON_PROPERTY_SET:
+
+		break;
+	}	
 }
 
 void MotionMain()

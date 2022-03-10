@@ -29,5 +29,8 @@
     <ClInclude Include="DP_COMMAND.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="PublicStatic.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

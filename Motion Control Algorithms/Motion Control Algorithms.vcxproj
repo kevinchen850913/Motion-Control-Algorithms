@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="DP_COMMAND.h" />
     <ClInclude Include="MotionMain.h" />
+    <ClInclude Include="PublicStatic.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
